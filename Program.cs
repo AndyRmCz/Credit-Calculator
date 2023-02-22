@@ -1,4 +1,6 @@
 ﻿namespace U2A3;
+
+using System;
 class Program
 {
     static int tableWidth = 70;
@@ -98,7 +100,7 @@ static string AlignCentre(string text, int width)
       Console.Write("Ingrese el plazo del credito (6, 12, 18, 24): ");
       plazo = Convert.ToInt32(Console.ReadLine());
       Console.Write("Estado crediticio ([E]xcelente, [B]ueno, [R]egular): ");
-      estadoCredito = Console.ReadLine();
+      estadoCredito = Console.ReadLine()!;
   }
   
   static void PrintTable(){

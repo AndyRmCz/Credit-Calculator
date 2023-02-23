@@ -3,7 +3,7 @@
 using System;
 class Program
 {
-    static int tableWidth = 70;
+  static int tableWidth = 70;
   
   static void Main() {
     
@@ -13,9 +13,9 @@ class Program
     const  double REGULAR = .15;
     
     //Variables para datos de entrada
-    double monto;
-    int plazo;
-    string estadoCredito;
+    double monto = 0;
+    int plazo = 0;
+    char estadoCredito = 'E';
     
     bool continuar = true;
     
@@ -38,13 +38,16 @@ class Program
         }
         else if (op == '2'){
             //Ejecuta metodo para mostrar el esquema de pago
-            PrintTable();
+            PrintTable(monto, plazo,estadoCredito);
         }
         else if (op == '3'){
             //Ejecuta metodo para calcular reservas
         }
         else if (op == '4'){
             //Ejecuta metodo para mostrar tasa de interes anual
+            Console.Clear();
+            Console.WriteLine("La tasa de interes anual es de " + 100*tasaInteres(estadoCredito) + "%");
+            Console.ReadKey();
         }
     }while(continuar);
 
@@ -94,23 +97,45 @@ static string AlignCentre(string text, int width)
     }
 }
   
-  static void entryData(out double monto, out int plazo, out string estadoCredito){
+  static void entryData(out double monto, out int plazo, out char estadoCredito){
       Console.Write("Ingrese el monto del credito: ");
       monto = Convert.ToDouble(Console.ReadLine());
       Console.Write("Ingrese el plazo del credito (6, 12, 18, 24): ");
       plazo = Convert.ToInt32(Console.ReadLine());
-      Console.Write("Estado crediticio ([E]xcelente, [B]ueno, [R]egular): ");
-      estadoCredito = Console.ReadLine()!;
+      estadoCredito = Char.ToUpper(GetKeyPress("Estado crediticio ([E]xcelente, [B]ueno, [R]egular): ", new Char[] { 'E', 'B','R' } ));
   }
   
-  static void PrintTable(){
+  static void PrintTable(double monto, int plazo, char estadoCredito){
+    
+    double interes = calcInteres(monto, plazo, tasaInteres(estadoCredito));
+    double totalCredito = monto + interes;
+    double saldo = totalCredito;
+    
     PrintLine();
     PrintRow("Menusualidad", "Monto", "Capital","Interes","Saldo Final");
-    for(int i = 1; i <= 12;i++){
+    for(int i = 1; i <= plazo;i++){
+        saldo = saldo - (totalCredito / plazo);
         PrintLine();
-        PrintRow("","","","","");
+        PrintRow(Convert.ToString(i),Convert.ToString((Math.Round(totalCredito / plazo,2))),Convert.ToString((monto/plazo).ToString("C")),Convert.ToString((interes/plazo).ToString("C")),Convert.ToString((saldo).ToString("C")));
     }
     PrintLine();
     Console.ReadLine();
+  }
+  
+  static double calcInteres(double monto, int plazo, double interesAnual){
+      double montoInteres = monto*(interesAnual/12)*plazo;
+      return montoInteres;
+  }
+  
+  static double tasaInteres(char estadoCredito){
+      if(estadoCredito.Equals('E')){
+          return .05;
+      }
+      else if (estadoCredito.Equals('B')){
+          return .1;
+      }
+      else{
+          return .15;
+      }
   }
 }

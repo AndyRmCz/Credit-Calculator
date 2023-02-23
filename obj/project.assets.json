@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\anram\\.nuget\\packages\\": {}
+    "C:\\Users\\85127608\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UNADM\\.NET\\U2\\U2A3\\credit-calculator\\U2A3.csproj",
+      "projectUniqueName": "C:\\Users\\85127608\\Documents\\VS Code\\DotNet\\credit-calculator\\U2A3.csproj",
       "projectName": "U2A3",
-      "projectPath": "D:\\UNADM\\.NET\\U2\\U2A3\\credit-calculator\\U2A3.csproj",
-      "packagesPath": "C:\\Users\\anram\\.nuget\\packages\\",
-      "outputPath": "D:\\UNADM\\.NET\\U2\\U2A3\\credit-calculator\\obj\\",
+      "projectPath": "C:\\Users\\85127608\\Documents\\VS Code\\DotNet\\credit-calculator\\U2A3.csproj",
+      "packagesPath": "C:\\Users\\85127608\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\85127608\\Documents\\VS Code\\DotNet\\credit-calculator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\anram\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\85127608\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -3,14 +3,15 @@
 using System;
 class Program
 {
-  static int tableWidth = 70;
+    static int tableWidth = 70;
+    const  double EXCELENTE = .05;
+    const  double BUENO = .10;
+    const  double REGULAR = .15;
   
   static void Main() {
     
     //Constantes de interes por estado de credito 
-    const  double EXCELENTE = .05;
-    const  double BUENO = .10;
-    const  double REGULAR = .15;
+    
     
     //Variables para datos de entrada
     double monto = 0;
@@ -42,6 +43,9 @@ class Program
         }
         else if (op == '3'){
             //Ejecuta metodo para calcular reservas
+            Console.Clear();
+            System.Console.WriteLine("Las reservas del credito son por: " + (calcReservas(monto)).ToString("C"));
+            Console.ReadKey();
         }
         else if (op == '4'){
             //Ejecuta metodo para mostrar tasa de interes anual
@@ -129,13 +133,26 @@ static string AlignCentre(string text, int width)
   
   static double tasaInteres(char estadoCredito){
       if(estadoCredito.Equals('E')){
-          return .05;
+          return EXCELENTE;
       }
       else if (estadoCredito.Equals('B')){
-          return .1;
+          return BUENO;
       }
       else{
-          return .15;
+          return REGULAR;
       }
+  }
+
+  static double calcReservas(double monto){
+    double reservas = 0;
+    double probIncumplimiento = .0346;
+    if(monto < 100000){
+        reservas = probIncumplimiento*.3*(monto/2);
+    }
+    else{
+        reservas = probIncumplimiento*.45*(monto/2);
+    }
+
+    return reservas;
   }
 }
